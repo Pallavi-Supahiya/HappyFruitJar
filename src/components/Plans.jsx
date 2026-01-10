@@ -15,7 +15,7 @@ function Plans() {
           <p className="price">Region – Shimla </p>
           <p className="price">Estimated harvest: 20–30 kg </p>
           <p className="price">Harvest window: July–August </p>
-          <p className="price">Region</p>
+          
         {/*<ul><li>Abc</li>
           <li>def</li>
           </ul>*/}
