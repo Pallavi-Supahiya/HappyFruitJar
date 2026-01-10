@@ -1,0 +1,33 @@
+.hero {
+  text-align: center;
+  color: #F7F7F2;
+  padding: 80px 20px;
+  background-image: linear-gradient(
+      rgba(0,0,0,0.35),
+      rgba(0,0,0,0.35)
+    ),
+    url("/Apple Orchard Hero.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  /*background: linear-gradient(#FFF7E6, #ffffff);*/
+}
+
+.hero h1 {
+  color: #F7F7F2;
+  font-family: 'Poppins';
+  font-size: 3rem;
+}
+.hero p{
+  color: #E3E6DC;
+}
+.primary {
+  background: #8BC34A;
+  border: none;
+  padding: 12px 24px;
+  color: #ffffff;
+  border-radius: 25px;
+  hover:#689F38;
+}

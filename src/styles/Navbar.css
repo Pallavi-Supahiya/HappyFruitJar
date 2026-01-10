@@ -1,0 +1,147 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  color:#2E3D2F;
+}
+
+/* Animating from apple to sapling */
+.hamburger {
+  display: none;
+  font-size: 40px;      /* controls emoji size */
+  line-height: 1;       /* fixes vertical alignment */
+  cursor: pointer;
+  user-select: none;    /* prevents text selection */
+  transition: transform 0.3s ease;
+}
+
+/* Optional small animation on click */
+.hamburger:active {
+  transform: scale(0.9);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* When Animating through React emojis */
+/* .hamburger {
+  display: none;
+  cursor: pointer;
+} */
+
+/* Trying Animation 1 */
+/* .hamburger {
+  display: none;
+  width: 28px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburger span {
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 8px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 16px;
+}
+
+/* When menu is open */
+/* .hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px;
+} */ */
+
+
+/* Iniatial Hamburger */
+/* .hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+} */
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.logo {
+  height: 88px;        /* controls logo size */
+  width: auto;         /* keeps aspect ratio */
+  object-fit: contain;
+}
+
+.btn {
+  background: #FF9F1C;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .navbar nav {
+    display: none;            /* hide menu initially */
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    background: white;
+    margin-top: 10px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+  .navbar nav a {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .navbar nav.show {
+    display: flex;    /* show dropdown */
+    flex-direction: column;        
+    align-items: center;
+  }
+}
