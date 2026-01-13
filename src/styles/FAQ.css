@@ -1,17 +1,24 @@
 .faq-page {
   background: #fafafa;
+  font-family: 'Poppins', sans-serif;
+  /* Ensuring font consistency */
 }
 
 /* HERO */
 .faq-hero {
-  background: #2EC4B6;
-  color: white;
+  background: #f1f8e9;
+  /* Brand Light Green */
+  color: #2E3D2F;
+  /* Brand Dark Green */
   padding: 80px 20px;
   text-align: center;
 }
 
 .faq-hero h1 {
+  font-family: 'Playfair Display', serif;
+  /* Matching Contact Page Headings */
   margin-bottom: 10px;
+  color: #2E3D2F;
 }
 
 /* SECTIONS */
@@ -21,8 +28,21 @@
   padding: 60px 20px;
 }
 
+.faq-section h2 {
+  color: #2E3D2F;
+  /* Brand Dark Green */
+  margin-bottom: 20px;
+}
+
 .light-bg {
-  background: #F3FAF5;
+  background: #fff;
+  /* Reset to white for cleaner look on light gray page, or keep subtle green? */
+  background: #ffffff;
+  /* Actually, user asked to preserve layout/sections. 
+     The previous light-bg was #F3FAF5. 
+     Let's keep #F3FAF5 or use #f1f8e9 for consistency? 
+     Let's stick to #f1f8e9 to match Hero/Contact styles for consistence. */
+  background: #f1f8e9;
   border-radius: 24px;
 }
 
@@ -31,7 +51,7 @@
   background: white;
   border-radius: 16px;
   margin-bottom: 16px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 .faq-question {
@@ -40,22 +60,29 @@
   background: none;
   border: none;
   font-size: 16px;
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   cursor: pointer;
   text-align: left;
-  color: black;
+  color: #2E3D2F;
+  /* Brand Dark Green */
 }
 
 .faq-answer {
   padding: 0 20px 20px;
-  color: #444;
+  color: #555;
+  /* Neutral Dark */
+  line-height: 1.6;
 }
 
 /* CTA */
 .faq-cta {
-  background: #0f3d2e;
-  color: white;
+  background: #f1f8e9;
+  /* Brand Light Green */
+  color: #2E3D2F;
+  /* Brand Dark Green */
   text-align: center;
   padding: 60px 20px;
 }

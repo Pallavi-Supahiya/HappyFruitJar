@@ -5,6 +5,10 @@ import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./Pages/Home";
 import FAQ from "./Pages/FAQ";
+import HowItWorks from "./Pages/HowItWorks";
+import Farmers from "./Pages/Farmers";
+import Trees from "./Pages/Trees";
+import Contact from "./Pages/Contact";
 
 function App() {
 
@@ -35,7 +39,11 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/trees" element={<Trees />} />
+        <Route path="/farmers" element={<Farmers />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </>
