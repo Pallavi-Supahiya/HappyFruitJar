@@ -1,16 +1,25 @@
 import { useState } from 'react';
 import "../styles/ContactPage.css";
 
+// 🔴 REPLACE WITH YOUR DEPLOYED CONTACT US GOOGLE APPS SCRIPT WEB APP URL
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkh1iU09YPWN_IhBf8iBh8amSUgNnz5xloNyv9IapDQg4CLV-boRjozPRWFYRkagRq/exec";
+
 function Contact() {
-    const [formData, setFormData] = useState({
+    const initialFormState = {
         name: '',
         email: '',
         contectNumber: '',
         preferredMethod: 'Email',
         preferredTime: 'Morning (9-12)',
         message: ''
-    });
+    };
 
+    const [formData, setFormData] = useState(initialFormState);
+    const [status, setStatus] = useState("idle"); // idle, submitting, success, error
+    const [errorMessage, setErrorMessage] = useState("");
+
+    // Kept for backward compatibility with existing UI logic if needed, 
+    // but relies on status === 'success' now.
     const [submitted, setSubmitted] = useState(false);
 
     const handleChange = (e) => {
@@ -20,8 +29,42 @@ function Contact() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        // Reset form or handle API call here
+        setStatus("submitting");
+        setErrorMessage("");
+
+        // Map state to backend payload requirements
+        const payload = {
+            name: formData.name,
+            email: formData.email,
+            contactNumber: formData.contectNumber, // Fixing typo mapping for backend
+            preferredMethod: formData.preferredMethod,
+            preferredTime: formData.preferredTime,
+            message: formData.message,
+            timestamp: new Date().toISOString()
+        };
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    setStatus("success");
+                    setSubmitted(true);
+                    setFormData(initialFormState); // Reset form
+                } else {
+                    setStatus("error");
+                    setErrorMessage("Something went wrong. Please try again.");
+                }
+            })
+            .catch((err) => {
+                setStatus("error");
+                setErrorMessage("Network error. Please check your connection.");
+            });
     };
 
     const isPhoneRequired = ['Phone Call', 'WhatsApp'].includes(formData.preferredMethod);
@@ -34,14 +77,17 @@ function Contact() {
             </div>
 
             <div className="contact-container">
-                {submitted ? (
+                {status === "success" || submitted ? (
                     <div className="success-message">
                         <h3>Thanks for reaching out!</h3>
                         <p>We've received your message and will get back to you shortly.</p>
                         <button
                             className="submit-btn"
                             style={{ maxWidth: '200px', marginTop: '20px' }}
-                            onClick={() => setSubmitted(false)}
+                            onClick={() => {
+                                setSubmitted(false);
+                                setStatus("idle");
+                            }}
                         >
                             Send Another Message
                         </button>
@@ -132,7 +178,20 @@ function Contact() {
                             ></textarea>
                         </div>
 
-                        <button type="submit" className="submit-btn">Send Message</button>
+                        {status === "error" && (
+                            <p style={{ color: "red", textAlign: "center", marginBottom: "1rem" }}>
+                                {errorMessage}
+                            </p>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="submit-btn"
+                            disabled={status === "submitting"}
+                            style={{ opacity: status === "submitting" ? 0.7 : 1 }}
+                        >
+                            {status === "submitting" ? "Sending..." : "Send Message"}
+                        </button>
                     </form>
                 )}
 

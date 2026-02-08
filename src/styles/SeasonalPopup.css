@@ -1,0 +1,247 @@
+/* Overlay */
+.seasonal-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.4s ease-out;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+    /* Modern blur effect */
+}
+
+/* Modal Container */
+.seasonal-popup-content {
+    width: 90%;
+    max-width: 900px;
+    height: 70vh;
+    /* Covers significant screen height */
+    max-height: 700px;
+    min-height: 500px;
+
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Background Image Setup */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* Ensure text readability */
+    color: white;
+}
+
+/* Gradient Overlay for Text Readability */
+.seasonal-popup-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 100%);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+/* Content Wrapper to sit above the gradient */
+.seasonal-content-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 70px 40px 40px;
+    /* Increased top padding to clear close button */
+    max-width: 600px;
+}
+
+/* Close Button */
+.seasonal-popup-close {
+    position: absolute;
+    top: 12px;
+    /* Flush with edge (12px padding) */
+    right: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.seasonal-popup-close:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: rotate(90deg);
+    border-color: white;
+}
+
+/* Typography */
+.seasonal-popup-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+/* ... (Subtitle and CTA styles remain unchanged) ... */
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .seasonal-popup-content {
+        width: 90%;
+        height: auto;
+        min-height: 50vh;
+        padding: 60px 20px 40px;
+        /* Increased top padding to prevent overlap */
+    }
+
+    .seasonal-content-wrapper {
+        padding: 0;
+    }
+
+    .seasonal-popup-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    /* ... (Subtitle and CTA styles remain unchanged) ... */
+
+    .seasonal-popup-close {
+        top: 5px;
+        /* Keep at extreme edge */
+        right: 5px;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+}
+
+.seasonal-popup-subtitle {
+    font-size: 1.25rem;
+    color: #f9f9f9;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Image (Hidden in new design as we use background) */
+.seasonal-popup-image {
+    display: none;
+}
+
+/* CTA Button */
+.seasonal-popup-cta {
+    display: inline-block;
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 16px 48px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(139, 195, 74, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.seasonal-popup-cta:hover {
+    background-color: #7CB342;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 195, 74, 0.6);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .seasonal-popup-content {
+        width: 90%;
+        height: auto;
+        min-height: 50vh;
+        /* Allow smaller minimum for mobile */
+        padding: 60px 20px 40px;
+        /* Increased top padding */
+    }
+
+    .seasonal-content-wrapper {
+        padding: 0;
+    }
+
+    .seasonal-popup-title {
+        font-size: 2rem;
+        /* Adjusted for mobile readability */
+        margin-bottom: 10px;
+    }
+
+    .seasonal-popup-subtitle {
+        font-size: 1rem;
+        max-width: 100%;
+        margin-bottom: 30px;
+        padding: 0 10px;
+        /* Text padding */
+    }
+
+    .seasonal-popup-cta {
+        padding: 14px 36px;
+        font-size: 1rem;
+        width: auto;
+        min-width: 200px;
+    }
+
+    .seasonal-popup-close {
+        top: 12px;
+        /* Extreme top right on mobile too */
+        right: 12px;
+        width: 30px;
+        /* Slightly smaller */
+        height: 30px;
+        font-size: 16px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

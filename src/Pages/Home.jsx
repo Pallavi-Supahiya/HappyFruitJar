@@ -8,6 +8,7 @@ import TreeCard from "../components/UI/TreeCard";
 import Hero from "../components/Hero";
 import TreeDetailModal from "../components/Trees/TreeDetailModal";
 import SubscriptionModal from "../components/SubscriptionModal";
+import SeasonalPopup from "../components/UI/SeasonalPopup";
 
 import "../styles/Farmers.css";
 
@@ -18,6 +19,7 @@ function Home() {
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   // Modal State
+  const [showSubscription, setShowSubscription] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [subscriptionModalOpen, setSubscriptionModalOpen] = useState(false);
   const [selectedTree, setSelectedTree] = useState(null);
@@ -64,6 +66,7 @@ function Home() {
 
   return (
     <>
+      <SeasonalPopup />
       <Hero />
 
       <Section id="how" title={howItWorks.title}>
@@ -111,7 +114,7 @@ function Home() {
           )}
 
           <div className="plans-carousel" ref={carouselRef}>
-            {treesData.map((tree) => (
+            {treesData.filter(t => t.isFeatured).map((tree) => (
               <TreeCard
                 key={tree.id}
                 image={tree.image}
@@ -120,6 +123,7 @@ function Home() {
                 region={tree.region}
                 harvest={tree.yield}
                 window={tree.harvestWindow}
+                offer={tree.offer}
                 onRent={() => handleTreeSelect(tree)}
               />
             ))}

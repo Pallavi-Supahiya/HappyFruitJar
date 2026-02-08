@@ -11,7 +11,7 @@ function Navbar() {
     <>
       <header className="navbar">
         <Link to="/" className="logo-link">
-          <img src="./Happy_FruitJar_Logo_new.png" alt="Happy FruitJar" className="logo" />
+          <img src="/Happy_FruitJar_Logo_new.png" alt="Happy FruitJar" className="logo" />
         </Link>
 
         {/* Mobile Menu Trigger (Tree Icon) */}
