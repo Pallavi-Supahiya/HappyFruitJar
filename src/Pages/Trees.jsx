@@ -9,12 +9,16 @@ import "../styles/Trees.css";
 function Trees() {
     const [filter, setFilter] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
+    const [showInStockOnly, setShowInStockOnly] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     const [subscriptionModalOpen, setSubscriptionModalOpen] = useState(false);
     const [selectedTree, setSelectedTree] = useState(null);
 
-    // Available filters
-    const filters = ['All', 'Apple', 'Mango', 'Guava', 'Berries'];
+    // Available filters (Dynamic)
+    const filters = useMemo(() => {
+        const types = [...new Set(treesData.map(t => t.type))].sort();
+        return ['All', ...types];
+    }, []);
 
     // Filter Logic
     const filteredTrees = useMemo(() => {
@@ -22,9 +26,11 @@ function Trees() {
             const matchesType = filter === 'All' || tree.type === filter;
             const matchesSearch = tree.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 tree.region.toLowerCase().includes(searchQuery.toLowerCase());
-            return matchesType && matchesSearch;
+            const matchesAvailability = showInStockOnly ? tree.isAvailable : true;
+
+            return matchesType && matchesSearch && matchesAvailability;
         });
-    }, [filter, searchQuery]);
+    }, [filter, searchQuery, showInStockOnly]);
 
     const handleTreeSelect = (tree) => {
         setSelectedTree(tree);
@@ -52,6 +58,16 @@ function Trees() {
                 </div>
 
                 <div className="filter-bar">
+                    <label className="filter-pill checkbox-pill" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', background: showInStockOnly ? '#e8f5e9' : 'white', border: showInStockOnly ? '1px solid #8BC34A' : '1px solid #eee' }}>
+                        <input
+                            type="checkbox"
+                            checked={showInStockOnly}
+                            onChange={(e) => setShowInStockOnly(e.target.checked)}
+                            style={{ accentColor: '#8BC34A' }}
+                        />
+                        In Stock Only
+                    </label>
+                    <div className="divider" style={{ width: '1px', height: '24px', background: '#ddd', margin: '0 8px' }}></div>
                     {filters.map(f => (
                         <button
                             key={f}

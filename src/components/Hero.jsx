@@ -3,7 +3,7 @@ import "../styles/Hero.css";
 
 
 function Hero() {
- 
+
   return (
     <section className="hero">
       <h1>
@@ -16,9 +16,7 @@ function Hero() {
         from the farm.
       </p>
 
-      <button className="primary">
-        Rent a Tree
-      </button>
+
 
       {/* Later: Add video / illustration */}
     </section>

@@ -13,7 +13,12 @@ export const treesData = [
         farmerId: 1, // Rajesh
         impact: "Supports small-holder orchards in the Shimla valley, preserving traditional farming methods against industrial encroachment.",
         description: "Crisp, sweet, and locally beloved apples from the heart of Shimla. Perfect for fresh eating and pies.",
-        isAvailable: true
+        isAvailable: true,
+        isFeatured: true,
+        offer: {
+            type: "PERCENT",
+            value: 20
+        }
     },
     {
         id: 2,
@@ -29,7 +34,8 @@ export const treesData = [
         farmerId: 2, // Sujata
         impact: "Helps sustained organic certification efforts for 50+ acres of heritage mango orchards.",
         description: "The king of fruits. Adopting a Dasheri tree ensures a summer filled with sweet, fiberless delight.",
-        isAvailable: true
+        isAvailable: true,
+        isFeatured: true
     },
     {
         id: 3,
@@ -45,7 +51,8 @@ export const treesData = [
         farmerId: 3, // Vikram
         impact: "Directly contributes to soil regeneration projects along the Ganges basin.",
         description: "Famous for their red core and intense sweetness. A winter treat that boosts immunity.",
-        isAvailable: true
+        isAvailable: true,
+        isFeatured: true
     },
     {
         id: 4,
@@ -61,7 +68,8 @@ export const treesData = [
         farmerId: 4, // Anita
         impact: "Empowers women-led micro-farming collectives in the Western Ghats.",
         description: "Adopt a patch of premium strawberries. Juicy, red, and delivered fresh from the misty hills.",
-        isAvailable: true
+        isAvailable: false,
+        isFeatured: true
     },
     {
         id: 5,
@@ -77,7 +85,8 @@ export const treesData = [
         farmerId: 1, // Rajesh
         impact: "Supports high-altitude farming resilience against climate change impacts.",
         description: "Premium high-altitude apples known for their crunch and long shelf life.",
-        isAvailable: true
+        isAvailable: false,
+        isFeatured: true
     },
     {
         id: 6,
@@ -93,6 +102,7 @@ export const treesData = [
         farmerId: 2, // Sujata (Reusing for now)
         impact: "Keeps the Kesar variety genetically pure and commercially viable for local growers.",
         description: "Known as the Queen of Mangoes. Saffron-colored pulp with an unforgettable aroma.",
-        isAvailable: true
+        isAvailable: true,
+        isFeatured: true
     }
 ];
